@@ -16,7 +16,8 @@ class RestaurantServiceTest {
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
-
+        Restaurant restaurant1 = this.service.findRestaurantByName("ABC");
+        Assertions.assertNotNull(restaurant1);
 
     }
 
@@ -24,8 +25,10 @@ class RestaurantServiceTest {
     @Test
     public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
+        Restaurant restaurant1 = this.service.findRestaurantByName("ABC");
+        Assertions.assertNull(restaurant1);
         Assertions.assertThrows(restaurantNotFoundException.class, () -> {
-           System.out.println("testing");
+            this.service.findRestaurantByName("ABC...");
         });
 
     }
